@@ -22,7 +22,7 @@ def random_name(n):
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        # Genre.objects.bulk_create([Genre(pk=pk, title=random_string(50)) for pk in range(100)])
-        # Artist.objects.bulk_create([Artist(pk=pk, title=random_string(50)) for pk in range(100)])
+        Genre.objects.bulk_create([Genre(pk=pk, title=random_string(50)) for pk in range(100)])
+        Artist.objects.bulk_create([Artist(pk=pk, title=random_string(50)) for pk in range(100)])
         countries = Country.objects.bulk_create([Country(pk=pk, name=random_name(random.randint(10, 20))) for pk in range(10)] )
         City.objects.bulk_create([City(pk=pk, name=random_name(random.randint(5, 15)), country=random.choice(countries)) for pk in range(100)] )
