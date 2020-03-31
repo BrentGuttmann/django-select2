@@ -1,4 +1,6 @@
 from django.urls import include, path
+from django.views.generic import TemplateView
+from django.contrib import admin
 
 from .forms import (
     AddressChainedSelect2WidgetForm, AlbumModelSelect2WidgetForm,
@@ -8,6 +10,9 @@ from .forms import (
 from .views import TemplateFormView, heavy_data_1, heavy_data_2
 
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='index.html'), name="demo-index"),
+    path('admin/', admin.site.urls),
+
     path('select2_widget',
          TemplateFormView.as_view(form_class=Select2WidgetForm), name='select2_widget'),
     path('heavy_select2_widget',
